@@ -61,7 +61,7 @@ def main():
     val_segdir = '/work/APAC-TY/feiyeung/cs405/segment/gtFine/val/*'# Validation Labels/Segmented Images Directory
     val_segs = sorted(glob(os.path.join(val_segdir, "*_gtFine_labelIds.png")))# Suffix
 
-    print('validate examples num: '+len(val_images))
+    print('validate examples num: '+str(len(val_images)))
     # define transforms for image and segmentation
     train_imtrans = Compose(# The values in the set would be range(256)
         [
