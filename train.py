@@ -54,7 +54,7 @@ def main():
     train_images = sorted(glob(os.path.join(train_imdir, "*_leftImg8bit.png")))
     train_segdir = '/work/APAC-TY/feiyeung/cs405/segment/gtFine/train/*'# Training Labels/Segmented Images Directory
     train_segs = sorted(glob(os.path.join(train_segdir, "*_gtFine_labelIds.png")))# Suffix
-    print('train examples num: '+len(train_images))
+    print('train examples num: '+str(len(train_images)))
 
     val_imdir = '/work/APAC-TY/feiyeung/cs405/segment/leftImg8bit/val/*'# Validation Images Directory
     val_images = sorted(glob(os.path.join(val_imdir, "*_leftImg8bit.png")))
