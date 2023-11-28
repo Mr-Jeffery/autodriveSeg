@@ -2,6 +2,7 @@
 Semantic segmentation for auto-driving using based on project MONAI.
 
 ## Labels
+from [File Link]([/guides/content/editing-an-existing-page](https://github.com/mcordts/cityscapesScripts/blob/master/cityscapesscripts/helpers/labels.py))
 ```
 labels = [
     #       name                     id    trainId   category            catId     hasInstances   ignoreInEval   color
