@@ -88,24 +88,31 @@ clearml version: NOT INSTALLED or UNKNOWN VERSION.
 ```
 
 ## Training
+model converges in about 100 epoches when the batch size is set to 1 and roi is set to 2048*1024.
 ```
 module load cuda/11.8
 conda activate seg
 python train.py \
-    --max_epochs=500 \
-    --batch_size=20 \
-    --roi_x=512 \
-    --roi_y=512 \
-    --save_checkpoint="best_metric_model_segmentation2d_array_512by512_attention.pth" 2>&1 | tee tempoutput512_attention.txt
+    --max_epochs=100 \
+    --batch_size=1 \
+    --roi_x=2048 \
+    --roi_y=1024 \
+    --save_checkpoint="best_metric_model_segmentation2d_array.pth" 2>&1 | tee tempoutput.txt
 ```
 ## Viewing Log
 ```
 conda activate seg
-tail -f tempoutput512_attention.txt
+tail -f tempoutput_attention.txt
 tensorboard --logdir=runs
 ```
 
 ## Evaluating
 ```
-# Undone yet
+module load cuda/11.8
+conda activate seg
+python eval.py \
+    --batch_size=1 \
+    --roi_x=2048 \
+    --roi_y=1024 \
+    --load_checkpoint="best_metric_model_segmentation2d_array.pth" 2>&1 | tee tempoutput.txt
 ```
