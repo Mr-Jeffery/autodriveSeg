@@ -123,10 +123,8 @@ The main code is based on [unet_training from project MONAI](https://github.com/
 For model, Feiyang suggests the usage of [AttentionUnet](https://docs.monai.io/en/stable/_modules/monai/networks/nets/attentionunet.html), this model is a modified version of Unet with **Attention Gate** incorporated  inside. Gradients originating from background regions are down weighted
 during the backward pass. This allows model parameters in shallower layers to be updated mostly based on spatial regions that are relevant to a given task. Additive attention is formulated as follows:
 $$
-  q^l_{att} =  \psi^T (\sigma_1 (W^T_x x^l_i + W^T_g g^l_i + b_g)) +
-  b_{\psi}
-  \alpha^l_i  =  \sigma_2 (q^l_{att} (x^l_i, g_i ;
-  \Theta_{att}))
+q^l_{att} =  \psi^T (\sigma_1 (W^T_x x^l_i + W^T_g g^l_i + b_g)) +b_{\psi}
+\alpha^l_i  =  \sigma_2 (q^l_{att} (x^l_i, g_i ;\Theta_{att}))
 $$
 where $\sigma_2 = \frac{1}{\exp (- x_{i, c})}$
 
