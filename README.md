@@ -116,6 +116,24 @@ python eval.py \
     --roi_y=1024 \
     --load_checkpoint="best_metric_model_segmentation2d_array.pth" 2>&1 | tee tempoutput.txt
 ```
+
+## 20 out channel
+Please run the follwing steps:
+python clean_train.py \
+    --max_epochs=100 \
+    --batch_size=4 \
+    --roi_x=2048 \
+    --roi_y=1024 \
+    --save_checkpoint="weightedLossModel.pth" 2>&1 | tee tempoutput_new.txt
+python eval.py \
+    --batch_size=1 \
+    --roi_x=2048 \
+    --roi_y=1024 \
+    --load_checkpoint="weightedLossModel.pth" 2>&1 | tee tempoutput.txt
+python postval.py #convert the 20 channel inference result back to 33 channel.
+```
+
+```
 ## Research Design and Methods
 
 The main code is based on [unet_training from project MONAI](https://github.com/Project-MONAI/tutorials/blob/main/2d_segmentation/torch/unet_training_array.py). MONAI is a PyTorch-based, open-source framework for deep learning in healthcare imaging, part of the PyTorch Ecosystem. This package has implemented many different neural network for semenstic segmentation, making it conenient to deploy and modify.
