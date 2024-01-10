@@ -289,21 +289,21 @@ def main():
                 plot_2d_or_3d_image(id2color(tensor=post_train_trans(val_labels)).permute(0,1,3,2)/255, epoch + 1, writer, index=0, tag="label", max_channels=3)
                 print(val_outputs)
                 plot_2d_or_3d_image(id2color(tensor=post_train_trans(val_outputs)).permute(0,1,3,2)/255, epoch + 1, writer, index=0, tag="output", max_channels=3)
-                def confusionMat(y_pred, y):
-                    import io
-                    import PIL
-                    import matplotlib.pyplot as plt
-                    from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-                    cm = confusion_matrix(y_pred, y)
-                    disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-                    disp.plot()
-                    plt.title("Confusion Matrix")
-                    buf = io.BytesIO()
-                    plt.savefig(buf, format='jpeg')
-                    buf.seek(0)
-                    image = PIL.Image.open(buf)
-                    image = ToTensor()(image).unsqueeze(0)
-                    return image
+                # def confusionMat(y_pred, y):
+                #     import io
+                #     import PIL
+                #     import matplotlib.pyplot as plt
+                #     from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+                #     cm = confusion_matrix(y_pred, y)
+                #     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+                #     disp.plot()
+                #     plt.title("Confusion Matrix")
+                #     buf = io.BytesIO()
+                #     plt.savefig(buf, format='jpeg')
+                #     buf.seek(0)
+                #     image = PIL.Image.open(buf)
+                #     image = ToTensor()(image).unsqueeze(0)
+                #     return image
                 # writer.add_images('image', confusionMat(y_pred, y), 0)                
                 
 
